@@ -1,8 +1,8 @@
 package br.com.oobj.estacionamento.modelo;
 
-import br.com.oobj.estacionamento.servico.CalculadoraEstacionamento;
-import br.com.oobj.estacionamento.servico.impl.CalculadoraCarro;
-import br.com.oobj.estacionamento.servico.impl.CalculadoraMoto;;
+import br.com.oobj.estacionamento.servico.calculadoras.CalculadoraEstacionamento;
+import br.com.oobj.estacionamento.servico.calculadoras.impl.CalculadoraCarro;
+import br.com.oobj.estacionamento.servico.calculadoras.impl.CalculadoraMoto;;
 
 public enum TipoVeiculo {
 	

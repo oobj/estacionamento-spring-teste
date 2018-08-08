@@ -1,4 +1,4 @@
-package br.com.oobj.estacionamento.servico;
+package br.com.oobj.estacionamento.servico.calculadoras;
 
 import br.com.oobj.estacionamento.modelo.Veiculo;
 

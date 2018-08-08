@@ -1,7 +1,7 @@
-package br.com.oobj.estacionamento.servico.impl;
+package br.com.oobj.estacionamento.servico.calculadoras.impl;
 
 import br.com.oobj.estacionamento.modelo.Veiculo;
-import br.com.oobj.estacionamento.servico.CalculadoraEstacionamento;
+import br.com.oobj.estacionamento.servico.calculadoras.CalculadoraEstacionamento;
 
 public class CalculadoraMoto implements CalculadoraEstacionamento {
 	
