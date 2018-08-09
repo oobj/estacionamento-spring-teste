@@ -32,7 +32,7 @@ public class EstacionamentoServicoImpl implements EstacionamentoServico {
 	}
 
 	public Double calcularValor(Veiculo veiculo) {
-		// buscar o último estacionamento do veículo
+		veiculo = dao.buscarUltimoEstacionamentoPorPlaca(veiculo.getPlaca());
 		
 		return veiculo.getTipoVeiculo().getCalculadora().calcular(veiculo);
 	}

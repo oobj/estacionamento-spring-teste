@@ -19,6 +19,8 @@ import br.com.oobj.estacionamento.servico.EstacionamentoServico;
 @RunWith(SpringRunner.class)
 public class EstacionamentoServicoImplTest {
 	
+	private static final String PLACA = "AAA1234";
+
 	@MockBean
 	private EstacionamentoDAO daoMock;
 
@@ -29,6 +31,10 @@ public class EstacionamentoServicoImplTest {
 	public void setup() throws Exception {
 		sut = new EstacionamentoServicoImpl(daoMock);
 		veiculo = new Veiculo();
+		veiculo.setPlaca(PLACA);
+		
+		Mockito.when(daoMock.buscarUltimoEstacionamentoPorPlaca(PLACA))
+			.thenReturn(veiculo);
 	}
 	
 	@Test
@@ -41,7 +47,7 @@ public class EstacionamentoServicoImplTest {
 	@Test
 	public void deve_buscar_veiculo_antes_de_salvar_o_registro_de_saida() throws Exception {
 		// Preparação
-		String placa = "AAA1234";
+		String placa = PLACA;
 		veiculo.setPlaca(placa);
 		
 		// execução
@@ -49,6 +55,33 @@ public class EstacionamentoServicoImplTest {
 		
 		// verificação
 		Mockito.verify(daoMock).buscarUltimoEstacionamentoPorPlaca(placa);
+	}
+	
+	@Test
+	public void deve_buscar_ultima_interacao_do_veiculo_no_estacionamento_para_realizar_a_cobranca() throws Exception {
+		// Preparação
+		Veiculo veiculoDoBanco = new Veiculo();
+		veiculoDoBanco.setPlaca(PLACA);
+		veiculoDoBanco.setTipoVeiculo(TipoVeiculo.CARRO);
+		
+		Calendar dataHoraEntrada = Calendar.getInstance();
+		dataHoraEntrada.set(2018, Calendar.AUGUST, 6, 20, 0, 0);
+		veiculoDoBanco.setDataHoraEntrada(dataHoraEntrada.getTime());
+
+		Calendar dataHoraSaida = Calendar.getInstance();
+		dataHoraSaida.set(2018, Calendar.AUGUST, 6, 20, 25, 0);
+		veiculoDoBanco.setDataHoraSaida(dataHoraSaida.getTime());
+		
+		veiculo.setPlaca(PLACA);
+		
+		Mockito.when(daoMock.buscarUltimoEstacionamentoPorPlaca(PLACA))
+				.thenReturn(veiculoDoBanco);
+		
+		// Execuçao
+		Double valor = sut.calcularValor(veiculo);
+		
+		//verificaçao
+		assertEquals(2.0, valor, 0.0001);
 	}
 	
 	@Test
