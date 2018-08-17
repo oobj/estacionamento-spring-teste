@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.oobj.estacionamento.dao.EstacionamentoDAO;
+import br.com.oobj.estacionamento.dao.EstacionamentoDao;
 import br.com.oobj.estacionamento.modelo.TipoVeiculo;
 import br.com.oobj.estacionamento.modelo.Veiculo;
 import br.com.oobj.estacionamento.servico.EstacionamentoServico;
@@ -22,7 +22,7 @@ public class EstacionamentoServicoImplTest {
 	private static final String PLACA = "AAA1234";
 
 	@MockBean
-	private EstacionamentoDAO daoMock;
+	private EstacionamentoDao daoMock;
 
 	private EstacionamentoServico sut;
 	private Veiculo veiculo;

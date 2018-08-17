@@ -2,15 +2,15 @@ package br.com.oobj.estacionamento.servico.impl;
 
 import java.util.Date;
 
-import br.com.oobj.estacionamento.dao.EstacionamentoDAO;
+import br.com.oobj.estacionamento.dao.EstacionamentoDao;
 import br.com.oobj.estacionamento.modelo.Veiculo;
 import br.com.oobj.estacionamento.servico.EstacionamentoServico;
 
 public class EstacionamentoServicoImpl implements EstacionamentoServico {
 
-	private EstacionamentoDAO dao;
+	private EstacionamentoDao dao;
 
-	public EstacionamentoServicoImpl(EstacionamentoDAO dao) {
+	public EstacionamentoServicoImpl(EstacionamentoDao dao) {
 		this.dao = dao;
 	}
 
